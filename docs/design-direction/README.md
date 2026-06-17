@@ -6,6 +6,7 @@ This file locks the first visual direction for the Stellartide Studios design sy
 
 - Live reference: [Stand With Mavuika - Genshin Impact](https://act.hoyoverse.com/ys/event/e20241220preheat-thygrj/index.html?game_biz=hk4e_global&hyl_presentation_style=fullscreen&hyl_auth_required=true&hyl_landscape=true&hyl_hide_status_bar=true)
 - Saved local reference: [stand-with-mavuika-reference.webp](./references/stand-with-mavuika-reference.webp)
+- Website asset pool: `C:\Users\ctrca\Downloads\hoyoverse_event_assets\downloaders\downloaded_assets\images`
 
 These references are for visual direction only. Do not reuse HoYoverse, Genshin Impact, character, logo, or event art assets in shipped products.
 
@@ -47,7 +48,9 @@ These references are for visual direction only. Do not reuse HoYoverse, Genshin 
 ### Type
 
 - Body typography should be clean and cross-platform.
-- Display typography should allow condensed, high-impact treatments later.
+- Body typography uses Barlow for readable product surfaces.
+- Display typography uses Bungee for headings and compact display labels.
+- Zerowax is reserved for rare special titles and campaign moments.
 - Avoid baking a single poster style into every text primitive.
 
 ### Shadow And Elevation

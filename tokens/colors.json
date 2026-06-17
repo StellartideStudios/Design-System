@@ -1,0 +1,141 @@
+{
+  "assetContext": {
+    "websiteAssetPool": "C:\\Users\\ctrca\\Downloads\\hoyoverse_event_assets\\downloaders\\downloaded_assets\\images"
+  },
+  "background": {
+    "warmCream": {
+      "hex": "#FFF3DF",
+      "rgb": [255, 243, 223]
+    }
+  },
+  "primitive": {
+    "black": {
+      "name": "Black",
+      "hex": "#000000",
+      "rgb": [0, 0, 0]
+    },
+    "racingRed": {
+      "name": "Racing Red",
+      "hex": "#F20222",
+      "rgb": [242, 2, 34]
+    },
+    "atomicTangerine": {
+      "name": "Atomic Tangerine",
+      "hex": "#FF7433",
+      "rgb": [255, 116, 51]
+    },
+    "orange": {
+      "name": "Orange",
+      "hex": "#FBA934",
+      "rgb": [251, 169, 52]
+    },
+    "deepPurple": {
+      "name": "Deep Purple",
+      "hex": "#65005E",
+      "rgb": [101, 0, 94]
+    },
+    "indigo": {
+      "name": "Indigo",
+      "hex": "#490681",
+      "rgb": [73, 6, 129]
+    },
+    "tropicalMint": {
+      "name": "Tropical Mint",
+      "hex": "#61EFAF",
+      "rgb": [97, 239, 175]
+    },
+    "aquamarine": {
+      "name": "Aquamarine",
+      "hex": "#31F5D3",
+      "rgb": [49, 245, 211]
+    }
+  },
+  "semantic": {
+    "light": {
+      "background": {
+        "canvas": "#FFF3DF",
+        "inverse": "#000000"
+      },
+      "text": {
+        "primary": "#000000",
+        "brand": "#65005E",
+        "inverse": "#FFF3DF"
+      },
+      "action": {
+        "primary": {
+          "background": "#F20222",
+          "text": "#000000",
+          "hoverBackground": "#FF7433"
+        },
+        "secondary": {
+          "background": "#31F5D3",
+          "text": "#000000",
+          "hoverBackground": "#61EFAF"
+        }
+      },
+      "focus": {
+        "ring": "#31F5D3"
+      },
+      "selection": {
+        "background": "#65005E",
+        "text": "#FFF3DF"
+      },
+      "status": {
+        "danger": {
+          "background": "#F20222",
+          "text": "#000000"
+        },
+        "warning": {
+          "background": "#FBA934",
+          "text": "#000000"
+        },
+        "success": {
+          "background": "#61EFAF",
+          "text": "#000000"
+        }
+      }
+    },
+    "dark": {
+      "background": {
+        "canvas": "#000000",
+        "surface": "#65005E",
+        "surfaceMuted": "#490681"
+      },
+      "text": {
+        "primary": "#FFF3DF",
+        "inverse": "#000000"
+      },
+      "action": {
+        "primary": {
+          "background": "#31F5D3",
+          "text": "#000000",
+          "hoverBackground": "#61EFAF"
+        },
+        "secondary": {
+          "background": "#F20222",
+          "text": "#000000",
+          "hoverBackground": "#FF7433"
+        }
+      },
+      "accent": {
+        "hot": "#F20222",
+        "warm": "#FBA934",
+        "cool": "#31F5D3"
+      },
+      "focus": {
+        "ring": "#31F5D3"
+      }
+    }
+  },
+  "contrastPairs": {
+    "blackOnWarmCream": 19.14,
+    "racingRedOnWarmCream": 3.98,
+    "blackOnRacingRed": 4.81,
+    "blackOnAtomicTangerine": 7.8,
+    "blackOnOrange": 10.83,
+    "warmCreamOnDeepPurple": 11.16,
+    "warmCreamOnIndigo": 11.77,
+    "blackOnTropicalMint": 14.47,
+    "blackOnAquamarine": 15.13
+  }
+}

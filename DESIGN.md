@@ -27,24 +27,34 @@ The system rejects generic SaaS sameness, beige safety, reflexive dark-purple gr
 
 ## 2. Colors
 
-The palette direction is a full palette: hot coral/red, electric teal, bright yellow, deep tinted black, and warm cream are the early anchors, with exact values to be resolved during implementation.
+The first resolved palette is hot, electric, and practical: a warm cream background, hard black contrast, red/orange heat, purple depth, and mint/aquamarine energy.
 
 ### Primary
 
-- **Ignition Coral** ([to be resolved during implementation]): The main expressive brand accent for primary actions, campaign panels, active states, and moments that need heat.
+- **Racing Red** (`#F20222`): The main expressive brand accent for primary actions, campaign panels, active states, and moments that need heat.
+- **Atomic Tangerine** (`#FF7433`): A secondary heat accent for hover states, graphic edges, gradients, and active decoration.
+- **Orange** (`#FBA934`): The signal highlight for warnings, celebratory marks, and compact attention targets.
 
 ### Secondary
 
-- **Volt Teal** ([to be resolved during implementation]): The electric contrast color for focus, selection, outlines, graphic edges, and high-energy badges.
+- **Aquamarine** (`#31F5D3`): The electric contrast color for focus, selection, outlines, graphic edges, and high-energy badges.
+- **Tropical Mint** (`#61EFAF`): A softer success and glow accent for positive states, support graphics, and secondary highlights.
 
 ### Tertiary
 
-- **Signal Yellow** ([to be resolved during implementation]): A sparing emphasis color for warnings, highlights, celebratory accents, and small attention targets.
+- **Deep Purple** (`#65005E`): The saturated depth color for brand panels, campaign shadows, and dark-mode expressive surfaces.
+- **Indigo** (`#490681`): A cooler depth color for secondary dark surfaces, overlays, and dramatic accent contrast.
 
 ### Neutral
 
-- **Ash Black** ([to be resolved during implementation]): The dark foundation, never pure black, used for dark surfaces and high-contrast text.
-- **Warm Cream** ([to be resolved during implementation]): The light foundation, never pure white, used for light surfaces and softer contrast.
+- **Black** (`#000000`): The dark foundation for high-contrast text, dark surfaces, and hard-edged campaign moments.
+- **Warm Cream Background** (`#FFF3DF`): The light foundation for default page backgrounds and softer contrast.
+
+### Palette Values
+
+- CSV: `000000,F20222,FF7433,FBA934,65005E,490681,61EFAF,31F5D3`
+- With `#`: `#000000, #F20222, #FF7433, #FBA934, #65005E, #490681, #61EFAF, #31F5D3`
+- Background: `#FFF3DF`
 
 ### Named Rules
 
@@ -54,19 +64,22 @@ The palette direction is a full palette: hot coral/red, electric teal, bright ye
 
 ## 3. Typography
 
-**Display Font:** [font pairing to be chosen at implementation]
-**Body Font:** [font pairing to be chosen at implementation]
-**Label/Mono Font:** [font pairing to be chosen at implementation]
+**Special Display Font:** Zerowax
+**Display Font:** Bungee
+**Body Font:** Barlow
+**Label/Mono Font:** Barlow / system mono
 
-**Character:** The type system should start with a clean cross-platform sans for product UI, then allow a condensed or angular display voice for campaign surfaces. Body text must stay readable; display text can carry the punch.
+**Character:** The type system starts with Barlow as a calm, signage-adjacent reading face for product UI. Bungee carries section titles, labels, and compact display moments. Zerowax is reserved for rare special titles and campaign mastheads. Body text must stay readable; display text can carry the punch.
+
+**License Note:** The bundled Zerowax EULA is free for personal use. Commercial use, shipped app/web embedding, public distribution, and product work require author permission or the correct commercial license before release. The public repo should not include Zerowax font binaries until that is resolved.
 
 ### Hierarchy
 
-- **Display** ([to be resolved during implementation]): Hero moments, gallery headers, and brand panels only.
-- **Headline** ([to be resolved during implementation]): Section titles and major product screen headings.
-- **Title** ([to be resolved during implementation]): Component titles, card headings, and settings groups.
-- **Body** ([to be resolved during implementation]): Product copy, helper text, and documentation. Prose should cap at 65-75ch.
-- **Label** ([to be resolved during implementation]): Buttons, badges, form labels, metadata, and compact UI.
+- **Special Display** (Zerowax): Rare hero moments, campaign mastheads, and brand panels only.
+- **Display** (Bungee): Section titles, gallery headers, oversized badges, and high-energy labels.
+- **Title** (Bungee or Barlow 800): Component titles, card headings, and settings groups.
+- **Body** (Barlow): Product copy, helper text, and documentation. Prose should cap at 65-75ch.
+- **Label** (Barlow 700/800): Buttons, badges, form labels, metadata, and compact UI.
 
 ### Named Rules
 

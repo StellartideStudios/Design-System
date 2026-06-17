@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stellartide Token System</title>
+    <link rel="icon" href='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"%3E%3Crect width="32" height="32" fill="%23000"/%3E%3Cpath d="M4 4h24L4 28z" fill="%23F20222"/%3E%3Cpath d="M28 28H4L28 4z" fill="%2331F5D3" fill-opacity=".9"/%3E%3C/svg%3E' />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Bungee&display=swap");
+
+      @font-face {
+        font-family: "Zerowax";
+        src: url("../../typography/zerowax/fonts/Zerowax.otf") format("opentype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      :root {
+        --black: #000000;
+        --racing-red: #f20222;
+        --atomic-tangerine: #ff7433;
+        --orange: #fba934;
+        --deep-purple: #65005e;
+        --indigo: #490681;
+        --tropical-mint: #61efaf;
+        --aquamarine: #31f5d3;
+        --warm-cream: #fff3df;
+        --ink: var(--black);
+        --paper: var(--warm-cream);
+        --line: rgba(0, 0, 0, 0.16);
+        --soft-line: rgba(0, 0, 0, 0.08);
+        --shadow: 0 18px 48px rgba(73, 6, 129, 0.13);
+        --radius: 8px;
+        --font-special: "Zerowax", "Bungee", Impact, fantasy;
+        --font-display: "Bungee", Impact, fantasy;
+        --font-body: "Barlow", ui-sans-serif, system-ui, sans-serif;
+        color-scheme: light;
+        font-family: var(--font-body);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        background:
+          linear-gradient(90deg, rgba(101, 0, 94, 0.08) 1px, transparent 1px),
+          linear-gradient(rgba(242, 2, 34, 0.07) 1px, transparent 1px),
+          var(--paper);
+        background-size: 56px 56px;
+        color: var(--ink);
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 40px 0 48px;
+      }
+
+      .copy-button:focus-visible {
+        outline: 3px solid var(--aquamarine);
+        outline-offset: 3px;
+      }
+
+      .hero {
+        margin-bottom: 34px;
+      }
+
+      .intro {
+        min-height: 360px;
+        padding: clamp(24px, 5vw, 48px);
+        border: 2px solid var(--black);
+        background:
+          linear-gradient(135deg, transparent 0 72%, rgba(49, 245, 211, 0.28) 72% 76%, transparent 76%),
+          linear-gradient(135deg, transparent 0 82%, var(--orange) 82% 90%, transparent 90%),
+          var(--warm-cream);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .intro h2 {
+        max-width: 940px;
+        margin: 0;
+        color: var(--atomic-tangerine);
+        font-family: var(--font-special);
+        font-size: clamp(3.4rem, 10vw, 7.4rem);
+        font-weight: 400;
+        line-height: 0.82;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        paint-order: stroke fill;
+        -webkit-text-stroke: 1px var(--black);
+        text-shadow:
+          3px 3px 0 var(--orange),
+          6px 6px 0 var(--aquamarine);
+      }
+
+      .intro p {
+        max-width: 720px;
+        margin: 24px 0 0;
+        color: var(--deep-purple);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        font-weight: 700;
+        line-height: 1.45;
+      }
+
+      .intro-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .intro-pill {
+        border: 2px solid var(--black);
+        background: var(--warm-cream);
+        color: var(--black);
+        padding: 9px 12px 7px;
+        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.14);
+        font-size: 0.8rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .intro-pill strong {
+        color: var(--deep-purple);
+        font-family: var(--font-special);
+        font-size: 1.28rem;
+        font-weight: 400;
+        line-height: 0.8;
+      }
+
+      .section {
+        margin-top: 34px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 14px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        color: var(--black);
+        font-family: var(--font-display);
+        font-size: clamp(1.55rem, 4vw, 2.75rem);
+        font-weight: 400;
+        line-height: 0.82;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .section-title p {
+        max-width: 460px;
+        margin: 0;
+        color: var(--deep-purple);
+        font-size: 0.95rem;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+
+      .swatch-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .swatch-card {
+        border: 2px solid var(--black);
+        background: var(--warm-cream);
+        min-height: 238px;
+        display: grid;
+        grid-template-rows: 116px 1fr;
+        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.16);
+      }
+
+      .swatch-fill {
+        border-bottom: 2px solid var(--black);
+        position: relative;
+      }
+
+      .swatch-fill::before {
+        content: "";
+        position: absolute;
+        inset: 12px auto auto 12px;
+        width: 28px;
+        height: 28px;
+        border: 2px solid currentColor;
+        background: transparent;
+        transform: skew(-13deg);
+      }
+
+      .swatch-body {
+        display: grid;
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .swatch-title {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .swatch-title h3 {
+        margin: 0;
+        color: var(--black);
+        font-family: var(--font-display);
+        font-size: clamp(1rem, 1.55vw, 1.18rem);
+        font-weight: 400;
+        line-height: 0.9;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .copy-button {
+        width: 34px;
+        height: 34px;
+        border: 2px solid var(--black);
+        border-radius: 0;
+        background: var(--warm-cream);
+        color: var(--black);
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+      }
+
+      .copy-button svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .copy-button:hover {
+        background: var(--aquamarine);
+      }
+
+      .meta {
+        display: grid;
+        gap: 6px;
+        margin: 0;
+      }
+
+      .meta div {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        min-width: 0;
+        border-top: 1px solid var(--soft-line);
+        padding-top: 7px;
+        font-size: 0.82rem;
+      }
+
+      .meta dt {
+        color: rgba(0, 0, 0, 0.62);
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .meta dd {
+        margin: 0;
+        color: var(--black);
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        font-weight: 800;
+        text-align: right;
+        overflow-wrap: anywhere;
+      }
+
+      .toast {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 10;
+        min-width: 180px;
+        border: 2px solid var(--black);
+        background: var(--aquamarine);
+        color: var(--black);
+        padding: 12px 14px;
+        box-shadow: 4px 4px 0 var(--black);
+        font-size: 0.84rem;
+        font-family: var(--font-display);
+        font-weight: 400;
+        text-transform: uppercase;
+        transform: translateY(18px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 160ms ease, transform 160ms ease;
+      }
+
+      .toast.visible {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .license-note {
+        margin-top: 18px;
+        border-left: 8px solid var(--racing-red);
+        background: rgba(242, 2, 34, 0.08);
+        padding: 14px 16px;
+        color: var(--deep-purple);
+        font-size: 0.92rem;
+        font-weight: 760;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 920px) {
+        .swatch-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 620px) {
+        .page {
+          width: min(100% - 20px, 1180px);
+          padding-top: 16px;
+        }
+
+        .section-title {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .intro {
+          min-height: 300px;
+          padding: 22px;
+        }
+
+        .swatch-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .toast {
+          right: 10px;
+          bottom: 10px;
+          left: 10px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-labelledby="color-system-title">
+        <div class="intro">
+          <div>
+            <h2 id="color-system-title">Token System</h2>
+            <p>Resolved color and typography tokens for warm cream surfaces, hard black contrast, red-orange heat, purple depth, electric mint edges, and loud display moments.</p>
+            <div class="intro-meta" aria-label="Typography roles">
+              <span class="intro-pill">Display <strong>Zerowax</strong></span>
+              <span class="intro-pill">Body UI Sans</span>
+              <span class="intro-pill">Mono Tokens</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="palette-title">
+        <div class="section-title">
+          <h2 id="palette-title">Primitive Palette</h2>
+          <p>Each swatch keeps the raw token visible with the basic RGB value and intended first use.</p>
+        </div>
+        <div class="swatch-grid" id="swatchGrid"></div>
+        <p class="license-note">License check: the bundled Zerowax EULA is free for personal use. Commercial app or web shipping needs author permission or the correct license.</p>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+
+    <script>
+      const palette = [
+        { name: "Black", hex: "#000000", rgb: "0, 0, 0", use: "Hard contrast", text: "#FFF3DF" },
+        { name: "Racing Red", hex: "#F20222", rgb: "242, 2, 34", use: "Primary heat", text: "#000000" },
+        { name: "Atomic Tangerine", hex: "#FF7433", rgb: "255, 116, 51", use: "Hover heat", text: "#000000" },
+        { name: "Orange", hex: "#FBA934", rgb: "251, 169, 52", use: "Warning highlight", text: "#000000" },
+        { name: "Deep Purple", hex: "#65005E", rgb: "101, 0, 94", use: "Brand depth", text: "#FFF3DF" },
+        { name: "Indigo", hex: "#490681", rgb: "73, 6, 129", use: "Cool depth", text: "#FFF3DF" },
+        { name: "Tropical Mint", hex: "#61EFAF", rgb: "97, 239, 175", use: "Success glow", text: "#000000" },
+        { name: "Aquamarine", hex: "#31F5D3", rgb: "49, 245, 211", use: "Focus edge", text: "#000000" }
+      ];
+
+      const copyIcon = `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 8h10v12H8z" fill="none" stroke="currentColor" stroke-width="2"></path>
+          <path d="M5 16H4V4h12v1" fill="none" stroke="currentColor" stroke-width="2"></path>
+        </svg>
+      `;
+
+      const swatchGrid = document.querySelector("#swatchGrid");
+      const toast = document.querySelector("#toast");
+
+      swatchGrid.innerHTML = palette
+        .map(
+          (color) => `
+            <article class="swatch-card">
+              <div class="swatch-fill" style="background:${color.hex}; color:${color.text}"></div>
+              <div class="swatch-body">
+                <div class="swatch-title">
+                  <h3>${color.name}</h3>
+                  <button class="copy-button" type="button" data-copy="${color.hex}" title="Copy ${color.name}" aria-label="Copy ${color.name} hex">${copyIcon}</button>
+                </div>
+                <dl class="meta">
+                  <div><dt>Hex</dt><dd>${color.hex}</dd></div>
+                  <div><dt>RGB</dt><dd>${color.rgb}</dd></div>
+                  <div><dt>Use</dt><dd>${color.use}</dd></div>
+                </dl>
+              </div>
+            </article>
+          `
+        )
+        .join("");
+
+      function showToast(value) {
+        toast.textContent = `Copied ${value}`;
+        toast.classList.add("visible");
+        window.clearTimeout(showToast.timeout);
+        showToast.timeout = window.setTimeout(() => toast.classList.remove("visible"), 1400);
+      }
+
+      async function copyValue(value) {
+        try {
+          await navigator.clipboard.writeText(value);
+          showToast(value);
+        } catch {
+          const input = document.createElement("input");
+          input.value = value;
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand("copy");
+          input.remove();
+          showToast(value);
+        }
+      }
+
+      document.addEventListener("click", (event) => {
+        const copyButton = event.target.closest("[data-copy]");
+        if (copyButton) {
+          copyValue(copyButton.dataset.copy);
+        }
+      });
+    </script>
+  </body>
+</html>

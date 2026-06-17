@@ -1,0 +1,7 @@
+# Local font files that are not licensed for public distribution.
+typography/zerowax/fonts/
+typography/zerowax/license/
+typography/zerowax/preview/zerowax-render.png
+
+# Local generated prototype from the abandoned custom-font exploration.
+typography/stellartide-display/
