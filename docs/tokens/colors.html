@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Stellartide Token System</title>
     <link rel="icon" href='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"%3E%3Crect width="32" height="32" fill="%23000"/%3E%3Cpath d="M4 4h24L4 28z" fill="%23F20222"/%3E%3Cpath d="M28 28H4L28 4z" fill="%2331F5D3" fill-opacity=".9"/%3E%3C/svg%3E' />
+    <link rel="stylesheet" href="../../components/button/button.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Bungee&display=swap");
 
@@ -46,6 +47,7 @@
       body {
         min-width: 320px;
         margin: 0;
+        overflow-x: hidden;
         background:
           linear-gradient(90deg, rgba(101, 0, 94, 0.08) 1px, transparent 1px),
           linear-gradient(rgba(242, 2, 34, 0.07) 1px, transparent 1px),
@@ -74,6 +76,7 @@
       }
 
       .intro {
+        min-width: 0;
         min-height: 360px;
         padding: clamp(24px, 5vw, 48px);
         border: 2px solid var(--black);
@@ -97,11 +100,16 @@
         line-height: 0.82;
         letter-spacing: 0;
         text-transform: uppercase;
+        overflow-wrap: anywhere;
         paint-order: stroke fill;
         -webkit-text-stroke: 1px var(--black);
         text-shadow:
           3px 3px 0 var(--orange),
           6px 6px 0 var(--aquamarine);
+      }
+
+      .intro > div {
+        min-width: 0;
       }
 
       .intro p {
@@ -111,6 +119,7 @@
         font-size: clamp(1rem, 2vw, 1.2rem);
         font-weight: 700;
         line-height: 1.45;
+        overflow-wrap: anywhere;
       }
 
       .intro-meta {
@@ -140,6 +149,7 @@
       }
 
       .section {
+        min-width: 0;
         margin-top: 34px;
       }
 
@@ -160,6 +170,7 @@
         line-height: 0.82;
         letter-spacing: 0;
         text-transform: uppercase;
+        overflow-wrap: anywhere;
       }
 
       .section-title p {
@@ -178,6 +189,7 @@
       }
 
       .swatch-card {
+        min-width: 0;
         border: 2px solid var(--black);
         background: var(--warm-cream);
         min-height: 238px;
@@ -317,15 +329,148 @@
         line-height: 1.45;
       }
 
+      .component-stage {
+        display: grid;
+        gap: 22px;
+        border: 2px solid var(--black);
+        background:
+          linear-gradient(135deg, transparent 0 65%, rgb(49 245 211 / 0.24) 65% 69%, transparent 69%),
+          linear-gradient(135deg, transparent 0 79%, rgb(251 169 52 / 0.64) 79% 86%, transparent 86%),
+          rgb(255 243 223 / 0.9);
+        padding: clamp(18px, 4vw, 34px);
+        box-shadow: 6px 6px 0 rgb(0 0 0 / 0.14);
+      }
+
+      .button-hero-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 430px);
+        align-items: center;
+        gap: clamp(18px, 4vw, 34px);
+      }
+
+      .button-notes {
+        display: grid;
+        gap: 12px;
+      }
+
+      .button-notes h3 {
+        margin: 0;
+        color: var(--black);
+        font-family: var(--font-display);
+        font-size: clamp(1.35rem, 3vw, 2.2rem);
+        font-weight: 400;
+        line-height: 0.88;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .button-notes p {
+        max-width: 56ch;
+        margin: 0;
+        color: var(--deep-purple);
+        font-size: 0.98rem;
+        font-weight: 750;
+        line-height: 1.45;
+      }
+
+      .button-primary-demo {
+        display: grid;
+        justify-items: center;
+      }
+
+      .state-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .state-card {
+        min-width: 0;
+        border: 2px solid var(--black);
+        background: var(--warm-cream);
+        padding: 13px;
+        display: grid;
+        align-content: space-between;
+        gap: 18px;
+        min-height: 182px;
+        box-shadow: 4px 4px 0 rgb(0 0 0 / 0.12);
+      }
+
+      .state-card strong {
+        color: var(--black);
+        font-family: var(--font-display);
+        font-size: 0.95rem;
+        font-weight: 400;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .state-card > div:first-child > span {
+        display: block;
+        margin-top: 6px;
+        color: var(--deep-purple);
+        font-size: 0.78rem;
+        font-weight: 800;
+        line-height: 1.25;
+      }
+
+      .state-demo {
+        display: grid;
+        justify-items: center;
+      }
+
+      .state-demo .stellartide-campaign-button {
+        --stellartide-campaign-button-width: 210px;
+        font-size: clamp(1rem, 2vw, 1.45rem);
+      }
+
+      .button-rule-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .button-rule {
+        border: 2px solid var(--black);
+        background: rgb(255 243 223 / 0.78);
+        padding: 13px;
+        box-shadow: 4px 4px 0 rgb(0 0 0 / 0.1);
+      }
+
+      .button-rule strong {
+        display: block;
+        margin-bottom: 8px;
+        font-family: var(--font-display);
+        font-weight: 400;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .button-rule span {
+        color: var(--deep-purple);
+        font-size: 0.9rem;
+        font-weight: 750;
+        line-height: 1.35;
+      }
+
       @media (max-width: 920px) {
         .swatch-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .button-hero-row,
+        .button-rule-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .state-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
 
       @media (max-width: 620px) {
         .page {
-          width: min(100% - 20px, 1180px);
+          width: min(1180px, calc(100% - 20px));
           padding-top: 16px;
         }
 
@@ -339,7 +484,29 @@
           padding: 22px;
         }
 
+        .intro h2 {
+          font-size: clamp(2.85rem, 15vw, 4.8rem);
+        }
+
         .swatch-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .meta div {
+          align-items: start;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .meta dd {
+          text-align: left;
+        }
+
+        .component-stage {
+          padding: 14px;
+        }
+
+        .state-grid {
           grid-template-columns: 1fr;
         }
 
@@ -385,6 +552,100 @@
         </div>
         <div class="swatch-grid" id="swatchGrid"></div>
         <p class="license-note">License check: the bundled Zerowax EULA is free for personal use. Commercial app or web shipping needs author permission or the correct license.</p>
+      </section>
+
+      <section class="section" aria-labelledby="button-component-title">
+        <div class="section-title">
+          <h2 id="button-component-title">Campaign Button</h2>
+          <p>Use this high-energy button for rare brand actions, launch moments, and hero CTAs.</p>
+        </div>
+
+        <div class="component-stage">
+          <div class="button-hero-row">
+            <div class="button-notes">
+              <h3>Angular CTA</h3>
+              <p>The SVG shell carries the sharp campaign silhouette, with angled halftone texture clipped into the left and right corners. The label stays real HTML text for localization, state styling, and accessible names.</p>
+            </div>
+            <div class="button-primary-demo">
+              <button class="stellartide-campaign-button" type="button">
+                <span>Log In</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="state-grid" aria-label="Campaign button states">
+            <article class="state-card">
+              <div>
+                <strong>Default</strong>
+                <span>Resting campaign action.</span>
+              </div>
+              <div class="state-demo">
+                <button class="stellartide-campaign-button" type="button">
+                  <span>Log In</span>
+                </button>
+              </div>
+            </article>
+            <article class="state-card">
+              <div>
+                <strong>Hover</strong>
+                <span>Lifted with stronger shadow.</span>
+              </div>
+              <div class="state-demo">
+                <button class="stellartide-campaign-button" type="button" data-state="hover">
+                  <span>Log In</span>
+                </button>
+              </div>
+            </article>
+            <article class="state-card">
+              <div>
+                <strong>Pressed</strong>
+                <span>Compressed into the page.</span>
+              </div>
+              <div class="state-demo">
+                <button class="stellartide-campaign-button" type="button" data-state="pressed">
+                  <span>Log In</span>
+                </button>
+              </div>
+            </article>
+            <article class="state-card">
+              <div>
+                <strong>Focus</strong>
+                <span>Aquamarine keyboard ring.</span>
+              </div>
+              <div class="state-demo">
+                <button class="stellartide-campaign-button" type="button" data-state="focus">
+                  <span>Log In</span>
+                </button>
+              </div>
+            </article>
+            <article class="state-card">
+              <div>
+                <strong>Disabled</strong>
+                <span>Muted but still legible.</span>
+              </div>
+              <div class="state-demo">
+                <button class="stellartide-campaign-button" type="button" disabled>
+                  <span>Log In</span>
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="button-rule-grid" aria-label="Campaign button usage rules">
+            <div class="button-rule">
+              <strong>Use</strong>
+              <span>Hero CTAs, event panels, launch actions, and branded entry points.</span>
+            </div>
+            <div class="button-rule">
+              <strong>Avoid</strong>
+              <span>Dense app toolbars, long labels, destructive confirmations, and repeated table actions.</span>
+            </div>
+            <div class="button-rule">
+              <strong>Label</strong>
+              <span>Keep copy short. One or two words gives the display type room to punch.</span>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 

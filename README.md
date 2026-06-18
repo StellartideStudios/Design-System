@@ -16,6 +16,11 @@ Design system workspace for Stellartide Studios.
 - [Color viewer](./docs/tokens/colors.html)
 - [Typography tokens](./docs/tokens/typography.md)
 
+## Components
+
+- [Button component](./docs/components/button.md)
+- [Button preview](./docs/components/button.html)
+
 ## Typography
 
 - [Zerowax display font](./typography/zerowax/README.md)

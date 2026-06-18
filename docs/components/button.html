@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stellartide Button Component</title>
+    <link rel="stylesheet" href="../../components/button/button.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Bungee&display=swap");
+
+      @font-face {
+        font-family: "Zerowax";
+        src: url("../../typography/zerowax/fonts/Zerowax.otf") format("opentype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      :root {
+        --black: #000000;
+        --racing-red: #f20222;
+        --atomic-tangerine: #ff7433;
+        --orange: #fba934;
+        --deep-purple: #65005e;
+        --aquamarine: #31f5d3;
+        --warm-cream: #fff3df;
+        --font-special: "Zerowax", "Bungee", Impact, fantasy;
+        --font-display: "Bungee", Impact, fantasy;
+        --font-body: "Barlow", ui-sans-serif, system-ui, sans-serif;
+        color-scheme: light;
+        font-family: var(--font-body);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        overflow-x: hidden;
+        background:
+          linear-gradient(90deg, rgb(101 0 94 / 0.08) 1px, transparent 1px),
+          linear-gradient(rgb(242 2 34 / 0.07) 1px, transparent 1px),
+          var(--warm-cream);
+        background-size: 56px 56px;
+        color: var(--black);
+      }
+
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 44px 0 56px;
+      }
+
+      .hero {
+        min-height: 54vh;
+        display: grid;
+        align-content: center;
+        gap: 28px;
+      }
+
+      .hero > * {
+        min-width: 0;
+      }
+
+      h1 {
+        max-width: 900px;
+        margin: 0;
+        color: var(--atomic-tangerine);
+        font-family: var(--font-special);
+        font-size: clamp(4.2rem, 13vw, 9rem);
+        font-weight: 400;
+        line-height: 0.82;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        paint-order: stroke fill;
+        -webkit-text-stroke: 1px var(--black);
+        overflow-wrap: anywhere;
+        text-shadow:
+          4px 4px 0 var(--orange),
+          8px 8px 0 var(--aquamarine);
+      }
+
+      .deck {
+        max-width: min(38ch, 100%);
+        margin: 0;
+        color: var(--deep-purple);
+        font-size: clamp(1rem, 2vw, 1.22rem);
+        font-weight: 750;
+        line-height: 1.5;
+      }
+
+      .stage {
+        display: grid;
+        gap: 34px;
+        margin-top: 10px;
+        padding: clamp(18px, 4vw, 38px);
+        border: 2px solid var(--black);
+        background:
+          linear-gradient(135deg, transparent 0 64%, rgb(49 245 211 / 0.25) 64% 68%, transparent 68%),
+          linear-gradient(135deg, transparent 0 77%, rgb(251 169 52 / 0.72) 77% 84%, transparent 84%),
+          rgb(255 243 223 / 0.9);
+        box-shadow: 6px 6px 0 rgb(0 0 0 / 0.14);
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: clamp(18px, 4vw, 34px);
+      }
+
+      .button-row .stellartide-campaign-button {
+        flex: 0 1 min(var(--stellartide-campaign-button-width), 100%);
+      }
+
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .spec {
+        min-height: 120px;
+        border: 2px solid var(--black);
+        background: var(--warm-cream);
+        padding: 14px;
+        box-shadow: 4px 4px 0 rgb(0 0 0 / 0.12);
+      }
+
+      .spec strong {
+        display: block;
+        margin-bottom: 8px;
+        font-family: var(--font-display);
+        font-weight: 400;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .spec span {
+        display: block;
+        color: var(--deep-purple);
+        font-size: 0.92rem;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+
+      @media (max-width: 760px) {
+        main {
+          width: min(1120px, calc(100% - 20px));
+          padding-top: 22px;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        h1 {
+          font-size: clamp(2.9rem, 13vw, 4.1rem);
+          -webkit-text-stroke-width: 0.75px;
+        }
+
+        .stage {
+          padding: 14px;
+        }
+
+        .spec-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero" aria-labelledby="button-title">
+        <div>
+          <h1 id="button-title">Campaign Button</h1>
+          <p class="deck">Angular action shell for brand moments, now with clipped halftone corner texture and native button behavior.</p>
+        </div>
+
+        <div class="stage">
+          <div class="button-row" aria-label="Button examples">
+            <button class="stellartide-campaign-button" type="button">
+              <span>Log In</span>
+            </button>
+            <button class="stellartide-campaign-button" type="button" style="--stellartide-campaign-button-width: 300px;">
+              <span>Start</span>
+            </button>
+            <button class="stellartide-campaign-button" type="button" disabled>
+              <span>Locked</span>
+            </button>
+          </div>
+
+          <div class="spec-grid" aria-label="Component notes">
+            <div class="spec">
+              <strong>Use</strong>
+              <span>Hero CTAs, launch actions, and event panels.</span>
+            </div>
+            <div class="spec">
+              <strong>Label</strong>
+              <span>Keep it short so the display type stays punchy.</span>
+            </div>
+            <div class="spec">
+              <strong>Focus</strong>
+              <span>Aquamarine outline keeps keyboard state visible.</span>
+            </div>
+            <div class="spec">
+              <strong>Motion</strong>
+              <span>Fast lift and press, disabled for reduced motion.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

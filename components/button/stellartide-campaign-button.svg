@@ -1,0 +1,57 @@
+<svg width="2216" height="818" viewBox="0 0 2216 818" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<clipPath id="button-face-clip">
+<path d="M279.244 685.669L349.886 540.331L387.285 498.805L246 245.5L678.167 179.059L910.872 174.907L852.696 220.585L1118.65 187.364L1521.72 199.822L1683.79 125.076L2024.53 87.7034L1937.27 228.89L1791.83 307.788L2037 386.686L1928.96 419.907L1708.72 473.89L1904 577.5L2037 735.5L1833.38 718.89L1509.26 677.364L279.244 685.669Z"/>
+</clipPath>
+<pattern id="button-halftone-dots" x="0" y="0" width="49" height="49" patternUnits="userSpaceOnUse" patternTransform="rotate(-6)">
+<circle cx="16" cy="16" r="13.5" fill="#FFFF8E"/>
+</pattern>
+<linearGradient id="button-halftone-left-top-fade" x1="246" y1="245" x2="612" y2="358" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="white"/>
+<stop offset="0.34" stop-color="white"/>
+<stop offset="0.74" stop-color="#666666"/>
+<stop offset="1" stop-color="black"/>
+</linearGradient>
+<linearGradient id="button-halftone-left-bottom-fade" x1="279" y1="686" x2="612" y2="548" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="white"/>
+<stop offset="0.34" stop-color="white"/>
+<stop offset="0.74" stop-color="#666666"/>
+<stop offset="1" stop-color="black"/>
+</linearGradient>
+<linearGradient id="button-halftone-right-top-fade" x1="2037" y1="386" x2="1708" y2="474" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="white"/>
+<stop offset="0.36" stop-color="white"/>
+<stop offset="0.76" stop-color="#666666"/>
+<stop offset="1" stop-color="black"/>
+</linearGradient>
+<linearGradient id="button-halftone-right-bottom-fade" x1="2037" y1="735" x2="1708" y2="474" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="white"/>
+<stop offset="0.36" stop-color="white"/>
+<stop offset="0.76" stop-color="#666666"/>
+<stop offset="1" stop-color="black"/>
+</linearGradient>
+<mask id="button-halftone-left-mask" x="0" y="0" width="2216" height="818" maskUnits="userSpaceOnUse">
+<rect width="2216" height="818" fill="black"/>
+<polygon points="246,245 626,214 474,384 324,502" fill="url(#button-halftone-left-top-fade)"/>
+<polygon points="279,686 350,540 474,502 640,668" fill="url(#button-halftone-left-bottom-fade)"/>
+</mask>
+<mask id="button-halftone-right-mask" x="0" y="0" width="2216" height="818" maskUnits="userSpaceOnUse">
+<rect width="2216" height="818" fill="black"/>
+<polygon points="2037,386 1929,420 1708,474 1886,342" fill="url(#button-halftone-right-top-fade)"/>
+<polygon points="1708,474 1904,577 2037,735 1842,626" fill="url(#button-halftone-right-bottom-fade)"/>
+</mask>
+</defs>
+<path d="M120.516 714.817L286.745 490.555L0 212.303L910.103 120.937L652.448 382.577L1105.42 191.538L1795.27 37.8771L1537.62 145.855L2215 0.5L2044.62 307.822L1599.95 299.516L2177.6 760.5L224.409 677.44L120.516 714.817Z" fill="#7DFFFF"/>
+<path d="M121 714.808L320.503 498.808L121 241.269L553.257 199.731L1513.36 320.192L1500.9 149.885L2195 4.5L1949.78 274.5L1746.12 316.038L2024.59 444.808L1741.96 498.808L1895.75 586.038L2178.37 814.5L1135.14 685.731L121 714.808Z" fill="#FFFF8E"/>
+<path d="M387.5 498.5L218 687L289 685.5L387.5 498.5Z" fill="#E37EF3"/>
+<path d="M677.604 178.5L960.292 136.962L890.5 191.5L677.604 178.5Z" fill="#E37EF3"/>
+<path d="M1097 190L1785 113.5L1518.5 205L1097 190Z" fill="#E37EF3"/>
+<path d="M2037 386.192C1987.11 411.115 1829.14 478.408 1829.14 481.731C1829.14 485.054 1876.9 544 1906 580L1707 474L2037 386.192Z" fill="#E37EF3"/>
+<path d="M848.048 681.115L1513.2 652.038L1837.46 718.5L848.048 681.115Z" fill="#E37EF3"/>
+<path d="M1050.93 174.193L1762.74 0.5L1496.79 129.229L1050.93 174.193Z" fill="#F44407"/>
+<path d="M279.244 685.669L349.886 540.331L387.285 498.805L246 245.5L678.167 179.059L910.872 174.907L852.696 220.585L1118.65 187.364L1521.72 199.822L1683.79 125.076L2024.53 87.7034L1937.27 228.89L1791.83 307.788L2037 386.686L1928.96 419.907L1708.72 473.89L1904 577.5L2037 735.5L1833.38 718.89L1509.26 677.364L279.244 685.669Z" fill="#F44407"/>
+<g clip-path="url(#button-face-clip)">
+<rect x="112" y="180" width="640" height="550" fill="url(#button-halftone-dots)" mask="url(#button-halftone-left-mask)"/>
+<rect x="1660" y="330" width="430" height="440" fill="url(#button-halftone-dots)" mask="url(#button-halftone-right-mask)"/>
+</g>
+</svg>

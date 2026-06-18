@@ -1,0 +1,107 @@
+:root {
+  --stellartide-campaign-button-width: 360px;
+  --stellartide-campaign-button-text: #ffffff;
+  --stellartide-campaign-button-shadow: rgb(0 0 0 / 0.2);
+  --stellartide-campaign-button-focus: #31f5d3;
+  --stellartide-campaign-button-depth: #65005e;
+  --font-display: "Bungee", Impact, fantasy;
+}
+
+.stellartide-campaign-button {
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  place-items: center;
+  width: min(var(--stellartide-campaign-button-width), 100%);
+  max-width: 100%;
+  aspect-ratio: 2216 / 818;
+  border: 0;
+  padding: 0 18%;
+  background: transparent;
+  color: var(--stellartide-campaign-button-text);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 4vw, 2.85rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stellartide-campaign-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("./stellartide-campaign-button.svg") center / contain no-repeat;
+  filter: drop-shadow(0 8px 0 var(--stellartide-campaign-button-shadow));
+  transform: translateY(0) rotate(0deg);
+  transition:
+    filter 160ms ease,
+    transform 160ms ease;
+}
+
+.stellartide-campaign-button > span {
+  display: block;
+  max-width: 12ch;
+  color: var(--stellartide-campaign-button-text);
+  overflow-wrap: anywhere;
+  white-space: nowrap;
+  text-shadow:
+    0 3px 0 var(--stellartide-campaign-button-depth),
+    2px 2px 0 #000;
+  transform: translateY(-2%);
+  transition:
+    text-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.stellartide-campaign-button:hover::before,
+.stellartide-campaign-button[data-state="hover"]::before {
+  filter: drop-shadow(0 11px 0 rgb(0 0 0 / 0.24));
+  transform: translateY(-3px) rotate(-0.35deg);
+}
+
+.stellartide-campaign-button:hover > span,
+.stellartide-campaign-button[data-state="hover"] > span {
+  text-shadow:
+    0 4px 0 var(--stellartide-campaign-button-depth),
+    2px 2px 0 #000;
+  transform: translateY(calc(-2% - 3px)) rotate(-0.35deg);
+}
+
+.stellartide-campaign-button:active::before,
+.stellartide-campaign-button[data-state="pressed"]::before {
+  filter: drop-shadow(0 4px 0 rgb(0 0 0 / 0.24));
+  transform: translateY(2px) scale(0.99);
+}
+
+.stellartide-campaign-button:active > span,
+.stellartide-campaign-button[data-state="pressed"] > span {
+  text-shadow:
+    0 1px 0 var(--stellartide-campaign-button-depth),
+    1px 1px 0 #000;
+  transform: translateY(calc(-2% + 2px)) scale(0.99);
+}
+
+.stellartide-campaign-button:focus-visible,
+.stellartide-campaign-button[data-state="focus"] {
+  outline: 4px solid var(--stellartide-campaign-button-focus);
+  outline-offset: 5px;
+}
+
+.stellartide-campaign-button:disabled,
+.stellartide-campaign-button[aria-disabled="true"],
+.stellartide-campaign-button[data-state="disabled"] {
+  cursor: not-allowed;
+  filter: grayscale(0.2);
+  opacity: 0.56;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stellartide-campaign-button::before,
+  .stellartide-campaign-button > span {
+    transition: none;
+  }
+}
