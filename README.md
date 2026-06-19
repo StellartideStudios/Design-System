@@ -23,6 +23,12 @@ Design system workspace for Stellartide Studios.
 
 - [Button component](./docs/components/button.md)
 - [Button preview](./docs/components/button.html)
+- [Campaign surface components](./docs/components/surface.md)
+- [Campaign surface preview](./docs/components/surface.html)
+- [Effect and VFX components](./docs/components/effect.md)
+- [Effect preview](./docs/components/effect.html)
+- [Progress component](./docs/components/progress.md)
+- [Progress preview](./docs/components/progress.html)
 
 ## Typography
 

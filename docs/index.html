@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Stellartide Design System</title>
     <link rel="icon" href='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"%3E%3Crect width="32" height="32" fill="%23000"/%3E%3Cpath d="M4 5h22L8 27H4z" fill="%23F44407"/%3E%3Cpath d="M13 5h15L17 27H9z" fill="%237DFFFF"/%3E%3C/svg%3E' />
-    <link rel="stylesheet" href="../components/button/button.css?v=no-bubbles" />
+    <link rel="stylesheet" href="../components/button/button.css?v=corner-scale-fix" />
+    <link rel="stylesheet" href="../components/surface/surface.css?v=split-panel-fit" />
+    <link rel="stylesheet" href="../components/effect/effect.css?v=vfx-separated" />
+    <link rel="stylesheet" href="../components/progress/progress.css?v=progress-polish" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;0,800;0,900;1,400&family=Bungee&display=swap");
 
@@ -138,7 +141,8 @@
       }
 
       .page {
-        width: min(1180px, calc(100% - 32px));
+        width: calc(100% - 32px);
+        max-width: 1180px;
         margin: 0 auto;
         padding: 40px 0 68px;
       }
@@ -190,9 +194,13 @@
 
       .board {
         border: 2px solid var(--black);
-        background: rgb(255 243 223 / 0.94);
+        background:
+          linear-gradient(135deg, transparent 0 82%, rgb(49 245 211 / 0.12) 82% 85%, transparent 85%),
+          rgb(255 243 223 / 0.94);
         padding: clamp(16px, 3vw, 28px);
-        box-shadow: var(--shadow-hard);
+        box-shadow:
+          var(--shadow-hard),
+          inset 0 0 0 1px rgb(255 255 255 / 0.5);
       }
 
       .specimen {
@@ -255,6 +263,18 @@
         min-height: 112px;
       }
 
+      .specimen--button-three .demo-cell {
+        min-height: 124px;
+      }
+
+      .specimen--button-four .demo-grid {
+        grid-template-columns: repeat(4, minmax(96px, 1fr));
+      }
+
+      .specimen--button-four .demo-cell {
+        min-height: 132px;
+      }
+
       .state-label {
         color: var(--black);
         font-family: var(--font-mono);
@@ -272,6 +292,99 @@
       .demo-cell .stellartide-signal-button,
       .demo-cell .stellartide-button-2 {
         --stellartide-signal-button-width: 275px;
+      }
+
+      .demo-cell .stellartide-surge-button,
+      .demo-cell .stellartide-button-3 {
+        --stellartide-surge-button-width: 330px;
+      }
+
+      .demo-cell .stellartide-tile-button,
+      .demo-cell .stellartide-button-4 {
+        --stellartide-tile-button-width: 112px;
+      }
+
+      .specimen--surfaces .demo-grid {
+        grid-template-columns: minmax(280px, 0.95fr) minmax(320px, 1.05fr);
+      }
+
+      .demo-cell--surface-split {
+        min-height: 338px;
+      }
+
+      .demo-cell--surface-split .stellartide-surface--dialog-split {
+        --stellartide-surface-width: 100%;
+      }
+
+      .demo-cell--surface-wide {
+        min-height: 320px;
+      }
+
+      .demo-cell--surface-wide .stellartide-surface--wide {
+        --stellartide-surface-width: 100%;
+      }
+
+      .specimen--effects .demo-grid {
+        grid-template-columns: repeat(2, minmax(180px, 1fr));
+      }
+
+      .specimen--effects .demo-cell {
+        min-height: 190px;
+        border: 2px solid var(--black);
+        background:
+          linear-gradient(135deg, transparent 0 78%, rgb(49 245 211 / 0.16) 78% 83%, transparent 83%),
+          var(--warm-cream);
+        box-shadow:
+          4px 4px 0 rgb(0 0 0 / 0.12),
+          inset 0 0 0 1px rgb(255 255 255 / 0.55);
+      }
+
+      .specimen--effects .stellartide-effect {
+        --stellartide-effect-width: 154px;
+      }
+
+      .specimen--vfx .demo-grid {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+      }
+
+      .specimen--vfx .demo-cell {
+        min-height: 268px;
+        grid-template-rows: 18px minmax(0, 1fr);
+        justify-items: stretch;
+      }
+
+      .specimen--vfx .stellartide-vfx-scene {
+        --stellartide-vfx-scene-width: 100%;
+        --stellartide-vfx-scene-height: 220px;
+      }
+
+      .specimen--progress .demo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .specimen--progress .demo-cell {
+        min-height: 210px;
+        justify-items: stretch;
+      }
+
+      .progress-demo-stack {
+        display: grid;
+        width: 100%;
+        gap: 20px;
+      }
+
+      .progress-demo-item {
+        display: grid;
+        min-width: 0;
+        gap: 8px;
+      }
+
+      .progress-demo-item .state-label {
+        text-align: left;
+      }
+
+      .progress-demo-item .stellartide-progress {
+        --stellartide-progress-width: 680px;
       }
 
       .token-grid {
@@ -394,7 +507,8 @@
 
         .topbar-inner,
         .page {
-          width: min(1180px, calc(100% - 20px));
+          width: calc(100% - 20px);
+          max-width: 1180px;
         }
 
         .topbar-inner {
@@ -417,8 +531,16 @@
         }
 
         .demo-grid,
-        .token-grid {
+        .token-grid,
+        .specimen--surfaces .demo-grid,
+        .specimen--button-four .demo-grid,
+        .specimen--vfx .demo-grid,
+        .specimen--effects .demo-grid {
           grid-template-columns: 1fr;
+        }
+
+        .specimen--button-four .demo-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .demo-cell .stellartide-campaign-button {
@@ -428,6 +550,24 @@
         .demo-cell .stellartide-signal-button,
         .demo-cell .stellartide-button-2 {
           --stellartide-signal-button-width: 100%;
+        }
+
+        .demo-cell .stellartide-surge-button,
+        .demo-cell .stellartide-button-3 {
+          --stellartide-surge-button-width: 100%;
+        }
+
+        .demo-cell .stellartide-tile-button,
+        .demo-cell .stellartide-button-4 {
+          --stellartide-tile-button-width: 112px;
+        }
+
+        .progress-demo-item .stellartide-progress {
+          --stellartide-progress-width: 100%;
+        }
+
+        .specimen--vfx .stellartide-vfx-scene {
+          --stellartide-vfx-scene-height: 230px;
         }
       }
     </style>
@@ -441,6 +581,10 @@
         </a>
         <nav class="topnav" aria-label="Design system sections">
           <a href="#components">Components</a>
+          <a href="#surfaces">Surfaces</a>
+          <a href="#progress">Progress</a>
+          <a href="#effects">Effects</a>
+          <a href="#vfx">VFX</a>
           <a href="#colors">Colors</a>
           <a href="#typography">Typography</a>
         </nav>
@@ -495,6 +639,198 @@
               <div class="demo-cell">
                 <span class="state-label">Disabled</span>
                 <button class="stellartide-signal-button" type="button" disabled><span>Done</span></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="specimen specimen--button-three" aria-labelledby="button-three-title">
+            <h3 class="specimen-title" id="button-three-title">Button 3</h3>
+            <div class="demo-grid" aria-label="Button 3 states">
+              <div class="demo-cell">
+                <span class="state-label">Default</span>
+                <button class="stellartide-surge-button" type="button"><span>Launch</span></button>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Hover</span>
+                <button class="stellartide-surge-button" data-state="hover" type="button"><span>Charge</span></button>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Pressed</span>
+                <button class="stellartide-surge-button" data-state="pressed" type="button"><span>Strike</span></button>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Disabled</span>
+                <button class="stellartide-surge-button" type="button" disabled><span>Closed</span></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="specimen specimen--button-four" aria-labelledby="button-four-title">
+            <h3 class="specimen-title" id="button-four-title">Button 4</h3>
+            <div class="demo-grid" aria-label="Button 4 states">
+              <div class="demo-cell">
+                <span class="state-label">Default</span>
+                <button class="stellartide-tile-button" type="button"><span>Go</span></button>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Hover</span>
+                <button class="stellartide-tile-button" data-state="hover" type="button"><span>XP</span></button>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Pressed</span>
+                <button class="stellartide-tile-button" data-state="pressed" type="button"><span>Ok</span></button>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Disabled</span>
+                <button class="stellartide-tile-button" type="button" disabled><span>Off</span></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="specimen specimen--surfaces" id="surfaces" aria-labelledby="surfaces-title">
+            <h3 class="specimen-title" id="surfaces-title">Surfaces</h3>
+            <div class="demo-grid" aria-label="Surface component examples">
+              <div class="demo-cell demo-cell--surface-split">
+                <span class="state-label">Split Panel</span>
+                <section class="stellartide-surface stellartide-surface--dialog-split" aria-labelledby="index-split-surface-title">
+                  <div class="stellartide-surface__content">
+                    <div class="stellartide-surface__main">
+                      <p class="stellartide-surface__eyebrow">Chapter card</p>
+                      <h4 class="stellartide-surface__title" id="index-split-surface-title">New Route</h4>
+                      <p class="stellartide-surface__body">Primary copy sits above the rule.</p>
+                    </div>
+                    <div class="stellartide-surface__footer">
+                      <span>Reward window</span>
+                      <strong>12 days</strong>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="demo-cell demo-cell--surface-wide">
+                <span class="state-label">Wide Frame</span>
+                <section class="stellartide-surface stellartide-surface--wide" aria-labelledby="index-wide-surface-title">
+                  <div class="stellartide-surface__content">
+                    <p class="stellartide-surface__eyebrow">Wide panel</p>
+                    <h4 class="stellartide-surface__title" id="index-wide-surface-title">Event Notes</h4>
+                    <p class="stellartide-surface__body">Use this wider frame for readable campaign copy, gallery captions, or grouped announcements.</p>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </article>
+
+          <article class="specimen specimen--progress" id="progress" aria-labelledby="progress-title">
+            <h3 class="specimen-title" id="progress-title">Progress</h3>
+            <div class="demo-grid" aria-label="Progress component examples">
+              <div class="demo-cell">
+                <div class="progress-demo-stack">
+                  <div class="progress-demo-item">
+                    <span class="state-label">Event XP</span>
+                    <div class="stellartide-progress" role="progressbar" aria-label="Event XP" aria-valuemin="0" aria-valuemax="100" aria-valuenow="64" style="--stellartide-progress-scale: 0.64;">
+                      <span class="stellartide-progress__bar" aria-hidden="true"></span>
+                      <span class="stellartide-progress__label">64%</span>
+                    </div>
+                  </div>
+                  <div class="progress-demo-item">
+                    <span class="state-label">Daily Charge</span>
+                    <div class="stellartide-progress" data-tone="cool" role="progressbar" aria-label="Daily charge" aria-valuemin="0" aria-valuemax="100" aria-valuenow="38" style="--stellartide-progress-scale: 0.38;">
+                      <span class="stellartide-progress__bar" aria-hidden="true"></span>
+                      <span class="stellartide-progress__label">38%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="specimen specimen--effects" id="effects" aria-labelledby="effects-title">
+            <h3 class="specimen-title" id="effects-title">Effects</h3>
+            <div class="demo-grid" aria-label="Effect component examples">
+              <div class="demo-cell">
+                <span class="state-label">Level Flame</span>
+                <span class="stellartide-effect stellartide-effect--level-flame" aria-hidden="true"></span>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Share Flame</span>
+                <span class="stellartide-effect stellartide-effect--share-flame" aria-hidden="true"></span>
+              </div>
+            </div>
+          </article>
+
+          <article class="specimen specimen--vfx" id="vfx" aria-labelledby="vfx-title">
+            <h3 class="specimen-title" id="vfx-title">VFX</h3>
+            <div class="demo-grid" aria-label="VFX component examples">
+              <div class="demo-cell">
+                <span class="state-label">Aurora Wash</span>
+                <div class="stellartide-vfx-scene" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--aurora-wash"></span>
+                </div>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Smoke Mask</span>
+                <div class="stellartide-vfx-scene" data-preset="smoke" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--smoke-mask"></span>
+                </div>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Prism Strike</span>
+                <div class="stellartide-vfx-scene" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--prism-strike"></span>
+                </div>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Gold Rays</span>
+                <div class="stellartide-vfx-scene" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--gold-rays"></span>
+                </div>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Lightning Surge</span>
+                <div class="stellartide-vfx-scene" data-demo-frame="lightning" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--lightning-surge"></span>
+                </div>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Impact Flash</span>
+                <div class="stellartide-vfx-scene" data-demo-frame="impact" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--impact-flash"></span>
+                </div>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Fire Transition</span>
+                <div class="stellartide-vfx-scene" data-preset="transition" data-demo-frame="fire" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--fire-transition"></span>
+                </div>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Heat Field</span>
+                <div class="stellartide-vfx-scene" data-preset="loading-burn" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--loading-heat-field"></span>
+                </div>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Diagonal Lines</span>
+                <div class="stellartide-vfx-scene" data-preset="line-plate" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--diagonal-lines"></span>
+                </div>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Triangle Burst</span>
+                <div class="stellartide-vfx-scene" data-preset="sprite" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--triangle-burst"></span>
+                </div>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Cyan Fire</span>
+                <div class="stellartide-vfx-scene" data-preset="sprite" data-demo-frame="cyan-fire" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--cyan-fire-sprite"></span>
+                </div>
+              </div>
+              <div class="demo-cell">
+                <span class="state-label">Ember Transition</span>
+                <div class="stellartide-vfx-scene" data-preset="transition" data-demo-frame="ember" aria-hidden="true">
+                  <span class="stellartide-vfx stellartide-vfx--ember-transition"></span>
+                </div>
               </div>
             </div>
           </article>

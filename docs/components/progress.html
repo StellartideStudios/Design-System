@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stellartide Progress Component</title>
+    <link rel="stylesheet" href="../../components/progress/progress.css?v=progress-polish" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;0,800;0,900;1,400&family=Bungee&display=swap");
+
+      :root {
+        --black: #000000;
+        --warm-cream: #fff3df;
+        --deep-purple: #65005e;
+        --orange: #fba934;
+        --aquamarine: #31f5d3;
+        --font-display: "Bungee", Impact, fantasy;
+        --font-body: "Barlow", ui-sans-serif, system-ui, sans-serif;
+        color-scheme: light;
+        font-family: var(--font-body);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        background:
+          linear-gradient(90deg, rgb(101 0 94 / 0.08) 1px, transparent 1px),
+          linear-gradient(rgb(242 2 34 / 0.07) 1px, transparent 1px),
+          var(--warm-cream);
+        background-size: 56px 56px;
+        color: var(--black);
+      }
+
+      main {
+        width: calc(100% - 32px);
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 48px 0 68px;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 0.88;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        color: var(--orange);
+        font-size: clamp(2.7rem, 10vw, 5.8rem);
+        paint-order: stroke fill;
+        -webkit-text-stroke: 1px var(--black);
+        text-shadow:
+          4px 4px 0 var(--black),
+          8px 8px 0 var(--aquamarine);
+      }
+
+      .stage {
+        display: grid;
+        gap: 24px;
+        margin-top: 32px;
+        border: 2px solid var(--black);
+        background:
+          linear-gradient(135deg, transparent 0 82%, rgb(49 245 211 / 0.14) 82% 86%, transparent 86%),
+          rgb(255 243 223 / 0.94);
+        padding: clamp(16px, 4vw, 32px);
+        box-shadow: 6px 6px 0 rgb(0 0 0 / 0.16);
+      }
+
+      .progress-stack {
+        display: grid;
+        gap: 24px;
+        justify-items: start;
+      }
+
+      .progress-item {
+        display: grid;
+        width: min(100%, 760px);
+        gap: 8px;
+      }
+
+      .progress-item span:first-child {
+        color: var(--deep-purple);
+        font-family: var(--font-display);
+        font-size: 0.92rem;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .note {
+        max-width: 58ch;
+        margin: 10px 0 0;
+        color: var(--deep-purple);
+        font-weight: 800;
+        line-height: 1.45;
+        overflow-wrap: anywhere;
+      }
+
+      @media (max-width: 560px) {
+        main {
+          width: calc(100% - 20px);
+          padding-top: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Progress</h1>
+      <p class="note">Campaign progress bars with an asset-backed shell, real fill state, and accessible values.</p>
+
+      <section class="stage" aria-labelledby="progress-title">
+        <h2 id="progress-title">Bars</h2>
+        <div class="progress-stack">
+          <div class="progress-item">
+            <span>Event XP</span>
+            <div class="stellartide-progress" role="progressbar" aria-label="Event XP" aria-valuemin="0" aria-valuemax="100" aria-valuenow="64" style="--stellartide-progress-scale: 0.64;">
+              <span class="stellartide-progress__bar" aria-hidden="true"></span>
+              <span class="stellartide-progress__label">64%</span>
+            </div>
+          </div>
+
+          <div class="progress-item">
+            <span>Daily Charge</span>
+            <div class="stellartide-progress" data-tone="cool" role="progressbar" aria-label="Daily charge" aria-valuemin="0" aria-valuemax="100" aria-valuenow="38" style="--stellartide-progress-scale: 0.38;">
+              <span class="stellartide-progress__bar" aria-hidden="true"></span>
+              <span class="stellartide-progress__label">38%</span>
+            </div>
+          </div>
+
+          <div class="progress-item">
+            <span>Complete</span>
+            <div class="stellartide-progress" data-tone="complete" role="progressbar" aria-label="Complete" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" style="--stellartide-progress-scale: 1;">
+              <span class="stellartide-progress__bar" aria-hidden="true"></span>
+              <span class="stellartide-progress__label">100%</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

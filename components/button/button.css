@@ -4,31 +4,53 @@
   --stellartide-campaign-button-shadow: rgb(0 0 0 / 0.2);
   --stellartide-campaign-button-focus: #31f5d3;
   --stellartide-campaign-button-depth: #65005e;
+  --stellartide-button-corner-dots: url("./assets/button-corner-dots.png");
+  --stellartide-button-corner-dots-opacity: 0.9;
   --stellartide-signal-button-width: 340px;
   --stellartide-signal-button-text: #ffffff;
   --stellartide-signal-button-shadow: rgb(0 0 0 / 0.22);
   --stellartide-signal-button-focus: #31f5d3;
   --stellartide-signal-button-label-depth: #65005e;
+  --stellartide-surge-button-width: 440px;
+  --stellartide-surge-button-text: #ffffff;
+  --stellartide-surge-button-shadow: rgb(0 0 0 / 0.2);
+  --stellartide-surge-button-focus: #31f5d3;
+  --stellartide-surge-button-label-depth: #65005e;
+  --stellartide-tile-button-width: 108px;
+  --stellartide-tile-button-text: #65005e;
+  --stellartide-tile-button-shadow: rgb(0 0 0 / 0.18);
+  --stellartide-tile-button-focus: #31f5d3;
+  --stellartide-tile-button-label-glow: #fff783;
   --font-display: "Bungee", Impact, fantasy;
 }
 
 .stellartide-campaign-button {
+  --stellartide-campaign-button-label-width: 52cqw;
+  --stellartide-campaign-button-label-size: clamp(0.72rem, 10.8cqw, 2.4rem);
+  --stellartide-campaign-button-corner-size: clamp(42px, 19cqw, 86px);
+  --stellartide-campaign-button-corner-left-x: 27%;
+  --stellartide-campaign-button-corner-left-y: 62%;
+  --stellartide-campaign-button-corner-right-x: calc(100% + 8cqw);
+  --stellartide-campaign-button-corner-right-y: 38%;
+
   position: relative;
   isolation: isolate;
+  container-type: inline-size;
   display: inline-grid;
   place-items: center;
   width: min(var(--stellartide-campaign-button-width), 100%);
   max-width: 100%;
   aspect-ratio: 2216 / 818;
   border: 0;
-  padding: 0 18%;
+  padding: 0;
   background: transparent;
   color: var(--stellartide-campaign-button-text);
   cursor: pointer;
   font-family: var(--font-display);
-  font-size: clamp(1.25rem, 3.6vw, 2.55rem);
+  font-size: 1rem;
   line-height: 0.95;
   letter-spacing: 0;
+  overflow: visible;
   text-align: center;
   text-transform: uppercase;
   -webkit-tap-highlight-color: transparent;
@@ -47,14 +69,39 @@
     transform 160ms ease;
 }
 
+.stellartide-campaign-button::after {
+  content: "";
+  position: absolute;
+  left: var(--stellartide-campaign-button-corner-left-x);
+  top: var(--stellartide-campaign-button-corner-left-y);
+  z-index: 0;
+  width: var(--stellartide-campaign-button-corner-size);
+  aspect-ratio: 360 / 340;
+  pointer-events: none;
+  background: var(--stellartide-button-corner-dots) center / contain no-repeat;
+  mix-blend-mode: screen;
+  opacity: var(--stellartide-button-corner-dots-opacity);
+  transform: translate(-50%, -50%) rotate(-8deg);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
 .stellartide-campaign-button > span {
-  display: block;
   position: relative;
   z-index: 1;
-  max-width: 12ch;
+  display: grid;
+  width: min(var(--stellartide-campaign-button-label-width), 13ch);
+  min-height: 24cqw;
+  place-items: center;
+  background: transparent;
   color: var(--stellartide-campaign-button-text);
+  font-size: var(--stellartide-campaign-button-label-size);
+  isolation: isolate;
+  max-width: var(--stellartide-campaign-button-label-width);
   overflow-wrap: anywhere;
-  white-space: nowrap;
+  text-wrap: balance;
+  white-space: normal;
   text-shadow:
     0 3px 0 var(--stellartide-campaign-button-depth),
     2px 2px 0 #000;
@@ -64,10 +111,35 @@
     transform 160ms ease;
 }
 
+.stellartide-campaign-button > span::before {
+  content: "";
+  position: absolute;
+  left: var(--stellartide-campaign-button-corner-right-x);
+  top: var(--stellartide-campaign-button-corner-right-y);
+  z-index: -1;
+  width: var(--stellartide-campaign-button-corner-size);
+  aspect-ratio: 360 / 340;
+  pointer-events: none;
+  background: var(--stellartide-button-corner-dots) center / contain no-repeat;
+  mix-blend-mode: screen;
+  opacity: var(--stellartide-button-corner-dots-opacity);
+  transform: translate(-50%, -50%) scaleX(-1) rotate(7deg);
+  transform-origin: center;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
 .stellartide-campaign-button:hover::before,
 .stellartide-campaign-button[data-state="hover"]::before {
   filter: drop-shadow(0 11px 0 rgb(0 0 0 / 0.24));
   transform: translateY(-3px) rotate(-0.35deg);
+}
+
+.stellartide-campaign-button:hover::after,
+.stellartide-campaign-button[data-state="hover"]::after {
+  opacity: 1;
+  transform: translate(-50%, calc(-50% - 3px)) rotate(-8.35deg);
 }
 
 .stellartide-campaign-button:hover > span,
@@ -78,10 +150,22 @@
   transform: translateY(calc(5% - 3px)) rotate(-0.35deg);
 }
 
+.stellartide-campaign-button:hover > span::before,
+.stellartide-campaign-button[data-state="hover"] > span::before {
+  opacity: 1;
+  transform: translate(-50%, calc(-50% - 3px)) scaleX(-1) rotate(7.35deg);
+}
+
 .stellartide-campaign-button:active::before,
 .stellartide-campaign-button[data-state="pressed"]::before {
   filter: drop-shadow(0 4px 0 rgb(0 0 0 / 0.24));
   transform: translateY(2px) scale(0.99);
+}
+
+.stellartide-campaign-button:active::after,
+.stellartide-campaign-button[data-state="pressed"]::after {
+  opacity: 0.78;
+  transform: translate(-50%, calc(-50% + 2px)) scale(0.99) rotate(-8deg);
 }
 
 .stellartide-campaign-button:active > span,
@@ -90,6 +174,12 @@
     0 1px 0 var(--stellartide-campaign-button-depth),
     1px 1px 0 #000;
   transform: translateY(calc(5% + 2px)) scale(0.99);
+}
+
+.stellartide-campaign-button:active > span::before,
+.stellartide-campaign-button[data-state="pressed"] > span::before {
+  opacity: 0.78;
+  transform: translate(-50%, calc(-50% + 2px)) scaleX(-1) scale(0.99) rotate(7deg);
 }
 
 .stellartide-campaign-button:focus-visible,
@@ -110,23 +200,32 @@
 .stellartide-button-2 {
   --stellartide-signal-button-art: url("./stellartide-signal-button.svg?v=no-bubbles");
   --stellartide-signal-button-aspect: 2204 / 554;
+  --stellartide-signal-button-label-width: 50cqw;
+  --stellartide-signal-button-label-size: clamp(0.62rem, 8.2cqw, 1.75rem);
+  --stellartide-signal-button-corner-size: clamp(34px, 15.5cqw, 66px);
+  --stellartide-signal-button-corner-left-x: 10.5%;
+  --stellartide-signal-button-corner-left-y: 62%;
+  --stellartide-signal-button-corner-right-x: calc(100% + 7cqw);
+  --stellartide-signal-button-corner-right-y: 40%;
 
   position: relative;
   isolation: isolate;
+  container-type: inline-size;
   display: inline-grid;
   place-items: center;
   width: min(var(--stellartide-signal-button-width), 100%);
   max-width: 100%;
   aspect-ratio: var(--stellartide-signal-button-aspect);
   border: 0;
-  padding: 0 16%;
+  padding: 0;
   background: transparent;
   color: var(--stellartide-signal-button-text);
   cursor: pointer;
   font-family: var(--font-display);
-  font-size: clamp(0.9rem, 2.35vw, 1.85rem);
+  font-size: 1rem;
   line-height: 0.9;
   letter-spacing: 0;
+  overflow: visible;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -147,15 +246,41 @@
     transform 150ms ease;
 }
 
+.stellartide-signal-button::after,
+.stellartide-button-2::after {
+  content: "";
+  position: absolute;
+  left: var(--stellartide-signal-button-corner-left-x);
+  top: var(--stellartide-signal-button-corner-left-y);
+  z-index: 0;
+  width: var(--stellartide-signal-button-corner-size);
+  aspect-ratio: 360 / 340;
+  pointer-events: none;
+  background: var(--stellartide-button-corner-dots) center / contain no-repeat;
+  mix-blend-mode: screen;
+  opacity: var(--stellartide-button-corner-dots-opacity);
+  transform: translate(-50%, -50%) rotate(-7deg);
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+}
+
 .stellartide-signal-button > span,
 .stellartide-button-2 > span {
-  display: block;
   position: relative;
   z-index: 1;
-  max-width: 13ch;
+  display: grid;
+  width: min(var(--stellartide-signal-button-label-width), 12ch);
+  min-height: 13cqw;
+  place-items: center;
+  background: transparent;
   color: var(--stellartide-signal-button-text);
+  font-size: var(--stellartide-signal-button-label-size);
+  isolation: isolate;
+  max-width: var(--stellartide-signal-button-label-width);
   overflow-wrap: anywhere;
-  white-space: nowrap;
+  text-wrap: balance;
+  white-space: normal;
   text-shadow:
     0 2px 0 var(--stellartide-signal-button-label-depth),
     2px 2px 0 #000;
@@ -165,12 +290,39 @@
     transform 150ms ease;
 }
 
+.stellartide-signal-button > span::before,
+.stellartide-button-2 > span::before {
+  content: "";
+  position: absolute;
+  left: var(--stellartide-signal-button-corner-right-x);
+  top: var(--stellartide-signal-button-corner-right-y);
+  z-index: -1;
+  width: var(--stellartide-signal-button-corner-size);
+  aspect-ratio: 360 / 340;
+  pointer-events: none;
+  background: var(--stellartide-button-corner-dots) center / contain no-repeat;
+  mix-blend-mode: screen;
+  opacity: var(--stellartide-button-corner-dots-opacity);
+  transform: translate(-50%, -50%) scaleX(-1) rotate(6deg);
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+}
+
 .stellartide-signal-button:hover::before,
 .stellartide-signal-button[data-state="hover"]::before,
 .stellartide-button-2:hover::before,
 .stellartide-button-2[data-state="hover"]::before {
   filter: drop-shadow(0 10px 0 rgb(0 0 0 / 0.25));
   transform: translateY(-3px) rotate(0.25deg);
+}
+
+.stellartide-signal-button:hover::after,
+.stellartide-signal-button[data-state="hover"]::after,
+.stellartide-button-2:hover::after,
+.stellartide-button-2[data-state="hover"]::after {
+  opacity: 1;
+  transform: translate(-50%, calc(-50% - 3px)) rotate(-6.75deg);
 }
 
 .stellartide-signal-button:hover > span,
@@ -183,12 +335,28 @@
   transform: translateY(calc(-12% - 3px)) rotate(0.25deg);
 }
 
+.stellartide-signal-button:hover > span::before,
+.stellartide-signal-button[data-state="hover"] > span::before,
+.stellartide-button-2:hover > span::before,
+.stellartide-button-2[data-state="hover"] > span::before {
+  opacity: 1;
+  transform: translate(-50%, calc(-50% - 3px)) scaleX(-1) rotate(6.25deg);
+}
+
 .stellartide-signal-button:active::before,
 .stellartide-signal-button[data-state="pressed"]::before,
 .stellartide-button-2:active::before,
 .stellartide-button-2[data-state="pressed"]::before {
   filter: drop-shadow(0 3px 0 rgb(0 0 0 / 0.25));
   transform: translateY(2px) scale(0.99);
+}
+
+.stellartide-signal-button:active::after,
+.stellartide-signal-button[data-state="pressed"]::after,
+.stellartide-button-2:active::after,
+.stellartide-button-2[data-state="pressed"]::after {
+  opacity: 0.78;
+  transform: translate(-50%, calc(-50% + 2px)) scale(0.99) rotate(-7deg);
 }
 
 .stellartide-signal-button:active > span,
@@ -199,6 +367,14 @@
     0 1px 0 var(--stellartide-signal-button-label-depth),
     1px 1px 0 #000;
   transform: translateY(calc(-12% + 2px)) scale(0.99);
+}
+
+.stellartide-signal-button:active > span::before,
+.stellartide-signal-button[data-state="pressed"] > span::before,
+.stellartide-button-2:active > span::before,
+.stellartide-button-2[data-state="pressed"] > span::before {
+  opacity: 0.78;
+  transform: translate(-50%, calc(-50% + 2px)) scaleX(-1) scale(0.99) rotate(6deg);
 }
 
 .stellartide-signal-button:focus-visible,
@@ -220,13 +396,274 @@
   opacity: 0.55;
 }
 
+.stellartide-surge-button,
+.stellartide-button-3 {
+  --stellartide-surge-button-art: url("./assets/stellartide-surge-button.png");
+  --stellartide-surge-button-aspect: 1138 / 295;
+  --stellartide-surge-button-label-width: 48cqw;
+  --stellartide-surge-button-label-size: clamp(0.65rem, 7.2cqw, 1.8rem);
+
+  position: relative;
+  isolation: isolate;
+  container-type: inline-size;
+  display: inline-grid;
+  place-items: center;
+  width: min(var(--stellartide-surge-button-width), 100%);
+  max-width: 100%;
+  aspect-ratio: var(--stellartide-surge-button-aspect);
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--stellartide-surge-button-text);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stellartide-surge-button::before,
+.stellartide-button-3::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--stellartide-surge-button-art) center / contain no-repeat;
+  filter: drop-shadow(0 8px 0 var(--stellartide-surge-button-shadow));
+  transform: translateY(0) rotate(0deg);
+  transition:
+    filter 150ms ease,
+    transform 150ms ease;
+}
+
+.stellartide-surge-button > span,
+.stellartide-button-3 > span {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(var(--stellartide-surge-button-label-width), 12ch);
+  min-height: 13cqw;
+  place-items: center;
+  background: transparent;
+  color: var(--stellartide-surge-button-text);
+  font-size: var(--stellartide-surge-button-label-size);
+  max-width: var(--stellartide-surge-button-label-width);
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+  white-space: normal;
+  text-shadow:
+    0 2px 0 var(--stellartide-surge-button-label-depth),
+    2px 2px 0 #000;
+  transform: translateY(-1%);
+  transition:
+    text-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.stellartide-surge-button:hover::before,
+.stellartide-surge-button[data-state="hover"]::before,
+.stellartide-button-3:hover::before,
+.stellartide-button-3[data-state="hover"]::before {
+  filter: drop-shadow(0 11px 0 rgb(0 0 0 / 0.24));
+  transform: translateY(-3px) rotate(-0.2deg);
+}
+
+.stellartide-surge-button:hover > span,
+.stellartide-surge-button[data-state="hover"] > span,
+.stellartide-button-3:hover > span,
+.stellartide-button-3[data-state="hover"] > span {
+  text-shadow:
+    0 3px 0 var(--stellartide-surge-button-label-depth),
+    2px 2px 0 #000;
+  transform: translateY(calc(-1% - 3px)) rotate(-0.2deg);
+}
+
+.stellartide-surge-button:active::before,
+.stellartide-surge-button[data-state="pressed"]::before,
+.stellartide-button-3:active::before,
+.stellartide-button-3[data-state="pressed"]::before {
+  filter: drop-shadow(0 4px 0 rgb(0 0 0 / 0.24));
+  transform: translateY(2px) scale(0.99);
+}
+
+.stellartide-surge-button:active > span,
+.stellartide-surge-button[data-state="pressed"] > span,
+.stellartide-button-3:active > span,
+.stellartide-button-3[data-state="pressed"] > span {
+  text-shadow:
+    0 1px 0 var(--stellartide-surge-button-label-depth),
+    1px 1px 0 #000;
+  transform: translateY(calc(-1% + 2px)) scale(0.99);
+}
+
+.stellartide-surge-button:focus-visible,
+.stellartide-surge-button[data-state="focus"],
+.stellartide-button-3:focus-visible,
+.stellartide-button-3[data-state="focus"] {
+  outline: 4px solid var(--stellartide-surge-button-focus);
+  outline-offset: 5px;
+}
+
+.stellartide-surge-button:disabled,
+.stellartide-surge-button[aria-disabled="true"],
+.stellartide-surge-button[data-state="disabled"],
+.stellartide-button-3:disabled,
+.stellartide-button-3[aria-disabled="true"],
+.stellartide-button-3[data-state="disabled"] {
+  cursor: not-allowed;
+  filter: grayscale(0.22);
+  opacity: 0.55;
+}
+
+.stellartide-tile-button,
+.stellartide-button-4 {
+  --stellartide-tile-button-art: url("./stellartide-tile-button.svg");
+  --stellartide-tile-button-aspect: 174 / 166;
+  --stellartide-tile-button-label-width: 58cqw;
+  --stellartide-tile-button-label-size: clamp(0.62rem, 16cqw, 1.18rem);
+
+  position: relative;
+  isolation: isolate;
+  container-type: inline-size;
+  display: inline-grid;
+  place-items: center;
+  width: var(--stellartide-tile-button-width);
+  min-width: 0;
+  max-width: 100%;
+  aspect-ratio: var(--stellartide-tile-button-aspect);
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--stellartide-tile-button-text);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 0.88;
+  letter-spacing: 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stellartide-tile-button::before,
+.stellartide-button-4::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--stellartide-tile-button-art) center / contain no-repeat;
+  filter: drop-shadow(0 6px 0 var(--stellartide-tile-button-shadow));
+  transform: translateY(0) rotate(0deg);
+  transition:
+    filter 150ms ease,
+    transform 150ms ease;
+}
+
+.stellartide-tile-button > span,
+.stellartide-button-4 > span {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(var(--stellartide-tile-button-label-width), 5.5ch);
+  min-height: 38cqw;
+  place-items: center;
+  background: transparent;
+  color: var(--stellartide-tile-button-text);
+  font-size: var(--stellartide-tile-button-label-size);
+  max-width: var(--stellartide-tile-button-label-width);
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+  white-space: normal;
+  text-shadow:
+    1px 1px 0 var(--stellartide-tile-button-label-glow),
+    2px 2px 0 rgb(255 255 255 / 0.75);
+  transform: translateY(2%);
+  transition:
+    text-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.stellartide-tile-button:hover::before,
+.stellartide-tile-button[data-state="hover"]::before,
+.stellartide-button-4:hover::before,
+.stellartide-button-4[data-state="hover"]::before {
+  filter: drop-shadow(0 9px 0 rgb(0 0 0 / 0.22));
+  transform: translateY(-3px) rotate(-0.7deg);
+}
+
+.stellartide-tile-button:hover > span,
+.stellartide-tile-button[data-state="hover"] > span,
+.stellartide-button-4:hover > span,
+.stellartide-button-4[data-state="hover"] > span {
+  text-shadow:
+    1px 1px 0 var(--stellartide-tile-button-label-glow),
+    3px 3px 0 rgb(255 255 255 / 0.75);
+  transform: translateY(calc(2% - 3px)) rotate(-0.7deg);
+}
+
+.stellartide-tile-button:active::before,
+.stellartide-tile-button[data-state="pressed"]::before,
+.stellartide-button-4:active::before,
+.stellartide-button-4[data-state="pressed"]::before {
+  filter: drop-shadow(0 3px 0 rgb(0 0 0 / 0.24));
+  transform: translateY(2px) scale(0.98);
+}
+
+.stellartide-tile-button:active > span,
+.stellartide-tile-button[data-state="pressed"] > span,
+.stellartide-button-4:active > span,
+.stellartide-button-4[data-state="pressed"] > span {
+  text-shadow:
+    1px 1px 0 var(--stellartide-tile-button-label-glow),
+    1px 1px 0 rgb(255 255 255 / 0.75);
+  transform: translateY(calc(2% + 2px)) scale(0.98);
+}
+
+.stellartide-tile-button:focus-visible,
+.stellartide-tile-button[data-state="focus"],
+.stellartide-button-4:focus-visible,
+.stellartide-button-4[data-state="focus"] {
+  outline: 4px solid var(--stellartide-tile-button-focus);
+  outline-offset: 5px;
+}
+
+.stellartide-tile-button:disabled,
+.stellartide-tile-button[aria-disabled="true"],
+.stellartide-tile-button[data-state="disabled"],
+.stellartide-button-4:disabled,
+.stellartide-button-4[aria-disabled="true"],
+.stellartide-button-4[data-state="disabled"] {
+  cursor: not-allowed;
+  filter: grayscale(0.24);
+  opacity: 0.56;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .stellartide-campaign-button::before,
+  .stellartide-campaign-button::after,
   .stellartide-campaign-button > span,
+  .stellartide-campaign-button > span::before,
   .stellartide-signal-button::before,
+  .stellartide-signal-button::after,
   .stellartide-signal-button > span,
+  .stellartide-signal-button > span::before,
   .stellartide-button-2::before,
-  .stellartide-button-2 > span {
+  .stellartide-button-2::after,
+  .stellartide-button-2 > span,
+  .stellartide-button-2 > span::before,
+  .stellartide-surge-button::before,
+  .stellartide-surge-button > span,
+  .stellartide-button-3::before,
+  .stellartide-button-3 > span,
+  .stellartide-tile-button::before,
+  .stellartide-tile-button > span,
+  .stellartide-button-4::before,
+  .stellartide-button-4 > span {
     transition: none;
   }
 }

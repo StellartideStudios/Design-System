@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Stellartide Button Components</title>
-    <link rel="stylesheet" href="../../components/button/button.css?v=no-bubbles" />
+    <link rel="stylesheet" href="../../components/button/button.css?v=corner-scale-fix" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Bungee&display=swap");
 
@@ -147,6 +147,16 @@
         flex: 0 1 min(var(--stellartide-signal-button-width), 100%);
       }
 
+      .button-row .stellartide-surge-button,
+      .button-row .stellartide-button-3 {
+        flex: 0 1 min(var(--stellartide-surge-button-width), 100%);
+      }
+
+      .button-row .stellartide-tile-button,
+      .button-row .stellartide-button-4 {
+        flex: 0 0 var(--stellartide-tile-button-width);
+      }
+
       .spec-grid {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -286,6 +296,88 @@
             <div class="spec">
               <strong>States</strong>
               <span>Hover, press, focus, and disabled mirror Button 1.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-header">
+            <h2>Button 3 / Surge</h2>
+            <p class="stage-copy">Long banner action shell for high-impact campaign choices and wide event CTAs.</p>
+          </div>
+
+          <div class="button-row" aria-label="Button 3 examples">
+            <button class="stellartide-surge-button" type="button">
+              <span>Launch</span>
+            </button>
+            <button class="stellartide-surge-button" data-state="hover" type="button">
+              <span>Charge</span>
+            </button>
+            <button class="stellartide-surge-button" data-state="pressed" type="button">
+              <span>Strike</span>
+            </button>
+            <button class="stellartide-surge-button" type="button" disabled>
+              <span>Closed</span>
+            </button>
+          </div>
+
+          <div class="spec-grid" aria-label="Button 3 component notes">
+            <div class="spec">
+              <strong>Use</strong>
+              <span>Wide campaign CTAs, chapter entries, and feature-forward choices.</span>
+            </div>
+            <div class="spec">
+              <strong>Class</strong>
+              <span>Use stellartide-surge-button, with stellartide-button-3 as an alias.</span>
+            </div>
+            <div class="spec">
+              <strong>Label</strong>
+              <span>One short verb keeps the long silhouette crisp.</span>
+            </div>
+            <div class="spec">
+              <strong>Shell</strong>
+              <span>PNG artwork is decorative; button text remains real HTML.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-header">
+            <h2>Button 4 / Tile</h2>
+            <p class="stage-copy">Small square action shell redrawn as SVG from the supplied tile, with the original center icon removed.</p>
+          </div>
+
+          <div class="button-row" aria-label="Button 4 examples">
+            <button class="stellartide-tile-button" type="button">
+              <span>Go</span>
+            </button>
+            <button class="stellartide-tile-button" data-state="hover" type="button">
+              <span>XP</span>
+            </button>
+            <button class="stellartide-tile-button" data-state="pressed" type="button">
+              <span>Ok</span>
+            </button>
+            <button class="stellartide-tile-button" type="button" disabled>
+              <span>Off</span>
+            </button>
+          </div>
+
+          <div class="spec-grid" aria-label="Button 4 component notes">
+            <div class="spec">
+              <strong>Use</strong>
+              <span>Small campaign actions, compact rewards, inventory affordances, and icon-sized controls.</span>
+            </div>
+            <div class="spec">
+              <strong>Class</strong>
+              <span>Use stellartide-tile-button, with stellartide-button-4 as an alias.</span>
+            </div>
+            <div class="spec">
+              <strong>Shell</strong>
+              <span>SVG artwork is intentionally blank in the center so content stays real markup.</span>
+            </div>
+            <div class="spec">
+              <strong>Label</strong>
+              <span>Keep labels to one or two characters, or pair icon-only use with a clear accessible name.</span>
             </div>
           </div>
         </div>

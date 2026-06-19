@@ -1,0 +1,174 @@
+:root {
+  --stellartide-progress-width: 560px;
+  --stellartide-progress-value: 62%;
+  --stellartide-progress-scale: 0.62;
+  --stellartide-progress-fill: #31f5d3;
+  --stellartide-progress-fill-hot: #f44407;
+  --stellartide-progress-fill-warm: #fba934;
+  --stellartide-progress-text: #ffffff;
+  --stellartide-progress-shadow: rgb(0 0 0 / 0.2);
+  --stellartide-progress-focus: #31f5d3;
+  --stellartide-progress-font-display: "Bungee", Impact, fantasy;
+  --stellartide-progress-font-body: "Barlow", ui-sans-serif, system-ui, sans-serif;
+}
+
+.stellartide-progress,
+.stellartide-progress *,
+.stellartide-progress::before,
+.stellartide-progress::after {
+  box-sizing: border-box;
+}
+
+.stellartide-progress {
+  --stellartide-progress-art: url("./assets/progress-shell.png");
+  --stellartide-progress-track-left: 43.5%;
+  --stellartide-progress-track-right: 10.2%;
+  --stellartide-progress-track-top: 18.5%;
+  --stellartide-progress-track-height: 61%;
+  --stellartide-progress-label-left: 7%;
+  --stellartide-progress-label-width: 26%;
+
+  position: relative;
+  isolation: isolate;
+  container-type: inline-size;
+  display: inline-grid;
+  place-items: center;
+  width: min(var(--stellartide-progress-width), 100%);
+  max-width: 100%;
+  aspect-ratio: 663 / 86;
+  color: var(--stellartide-progress-text);
+  font-family: var(--stellartide-progress-font-body);
+  vertical-align: top;
+}
+
+.stellartide-progress::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: var(--stellartide-progress-art) center / contain no-repeat;
+  filter: drop-shadow(0 7px 0 var(--stellartide-progress-shadow));
+}
+
+.stellartide-progress::after {
+  content: "";
+  position: absolute;
+  left: var(--stellartide-progress-track-left);
+  right: var(--stellartide-progress-track-right);
+  top: var(--stellartide-progress-track-top);
+  height: var(--stellartide-progress-track-height);
+  z-index: 4;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, rgb(101 0 94 / 0.22) 0 1px, transparent 1px 16px),
+    linear-gradient(180deg, rgb(255 255 255 / 0.72), transparent 52%),
+    linear-gradient(90deg, rgb(101 0 94 / 0.16), transparent 18% 76%, rgb(101 0 94 / 0.12)),
+    #fff3df;
+  clip-path: polygon(7% 0, 100% 0, 93% 100%, 0 100%);
+}
+
+.stellartide-progress__bar {
+  position: absolute;
+  left: var(--stellartide-progress-track-left);
+  right: var(--stellartide-progress-track-right);
+  top: var(--stellartide-progress-track-top);
+  z-index: 5;
+  width: auto;
+  height: var(--stellartide-progress-track-height);
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgb(255 255 255 / 0.4), transparent 16% 74%, rgb(255 255 255 / 0.28)),
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.18) 0 2px, transparent 2px 14px),
+    radial-gradient(circle at 15% 50%, rgb(255 255 255 / 0.88) 0 8%, transparent 9%),
+    linear-gradient(90deg, var(--stellartide-progress-fill-hot), var(--stellartide-progress-fill-warm) 45%, var(--stellartide-progress-fill));
+  clip-path: polygon(7% 0, 100% 0, 93% 100%, 0 100%);
+  transform: scaleX(var(--stellartide-progress-scale));
+  transform-origin: left center;
+  transition: transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.stellartide-progress__bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(110deg, transparent 0 34%, rgb(255 255 255 / 0.5) 35% 43%, transparent 44% 100%),
+    linear-gradient(180deg, rgb(255 255 255 / 0.44), transparent 42% 100%);
+  mix-blend-mode: screen;
+}
+
+.stellartide-progress__label {
+  position: absolute;
+  left: var(--stellartide-progress-label-left);
+  top: 50%;
+  z-index: 6;
+  display: grid;
+  width: var(--stellartide-progress-label-width);
+  min-height: 46%;
+  place-items: center;
+  max-width: var(--stellartide-progress-label-width);
+  background: transparent;
+  color: var(--stellartide-progress-text);
+  font-family: var(--stellartide-progress-font-display);
+  font-size: clamp(0.58rem, 3.15cqw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.9;
+  overflow-wrap: anywhere;
+  text-align: center;
+  text-shadow:
+    0 2px 0 #65005e,
+    2px 2px 0 #000000;
+  text-transform: uppercase;
+  transform: translateY(-51%) rotate(-1deg);
+}
+
+.stellartide-progress[data-tone="warm"] {
+  --stellartide-progress-fill: #ffff8e;
+  --stellartide-progress-fill-hot: #f44407;
+  --stellartide-progress-fill-warm: #fba934;
+}
+
+.stellartide-progress[data-tone="cool"] {
+  --stellartide-progress-fill: #31f5d3;
+  --stellartide-progress-fill-hot: #f44407;
+  --stellartide-progress-fill-warm: #7dffff;
+}
+
+.stellartide-progress[data-tone="complete"] {
+  --stellartide-progress-fill: #ffff8e;
+  --stellartide-progress-fill-hot: #31f5d3;
+  --stellartide-progress-fill-warm: #fba934;
+}
+
+.stellartide-progress[data-size="sm"] {
+  --stellartide-progress-width: 340px;
+}
+
+.stellartide-progress[data-size="lg"] {
+  --stellartide-progress-width: 720px;
+}
+
+.stellartide-progress:focus-visible {
+  outline: 4px solid var(--stellartide-progress-focus);
+  outline-offset: 6px;
+}
+
+@media (max-width: 560px) {
+  .stellartide-progress {
+    --stellartide-progress-label-left: 6.4%;
+    --stellartide-progress-label-width: 27%;
+  }
+
+  .stellartide-progress__label {
+    font-size: clamp(0.52rem, 3.4cqw, 0.82rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stellartide-progress__bar {
+    transition: none;
+  }
+}
