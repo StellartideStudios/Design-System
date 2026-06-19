@@ -2,6 +2,10 @@
 
 Design system workspace for Stellartide Studios.
 
+## Showcase
+
+- [Design system demo](./docs/index.html)
+
 ## Design Direction
 
 - [Initial design direction](./docs/design-direction/README.md)
@@ -13,7 +17,6 @@ Design system workspace for Stellartide Studios.
 ## Tokens
 
 - [Color tokens](./docs/tokens/colors.md)
-- [Color viewer](./docs/tokens/colors.html)
 - [Typography tokens](./docs/tokens/typography.md)
 
 ## Components

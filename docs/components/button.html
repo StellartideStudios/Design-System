@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Stellartide Button Component</title>
-    <link rel="stylesheet" href="../../components/button/button.css" />
+    <title>Stellartide Button Components</title>
+    <link rel="stylesheet" href="../../components/button/button.css?v=no-bubbles" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Bungee&display=swap");
 
@@ -54,7 +54,6 @@
       }
 
       .hero {
-        min-height: 54vh;
         display: grid;
         align-content: center;
         gap: 28px;
@@ -104,6 +103,34 @@
         box-shadow: 6px 6px 0 rgb(0 0 0 / 0.14);
       }
 
+      .stage + .stage {
+        margin-top: 26px;
+      }
+
+      .stage-header {
+        display: grid;
+        gap: 8px;
+      }
+
+      h2 {
+        margin: 0;
+        color: var(--black);
+        font-family: var(--font-display);
+        font-size: clamp(1.35rem, 4vw, 2.3rem);
+        font-weight: 400;
+        line-height: 0.92;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .stage-copy {
+        max-width: 58ch;
+        margin: 0;
+        color: var(--deep-purple);
+        font-weight: 750;
+        line-height: 1.45;
+      }
+
       .button-row {
         display: flex;
         flex-wrap: wrap;
@@ -113,6 +140,11 @@
 
       .button-row .stellartide-campaign-button {
         flex: 0 1 min(var(--stellartide-campaign-button-width), 100%);
+      }
+
+      .button-row .stellartide-signal-button,
+      .button-row .stellartide-button-2 {
+        flex: 0 1 min(var(--stellartide-signal-button-width), 100%);
       }
 
       .spec-grid {
@@ -175,11 +207,16 @@
     <main>
       <section class="hero" aria-labelledby="button-title">
         <div>
-          <h1 id="button-title">Campaign Button</h1>
-          <p class="deck">Angular action shell for brand moments, now with clipped halftone corner texture and native button behavior.</p>
+          <h1 id="button-title">Button Components</h1>
+          <p class="deck">Angular action shells for brand moments, keeping the artwork loud and the behavior native.</p>
         </div>
 
         <div class="stage">
+          <div class="stage-header">
+            <h2>Button 1 / Campaign</h2>
+            <p class="stage-copy">Hero CTA shell with saturated layering, clipped halftone corner texture, and short display labels.</p>
+          </div>
+
           <div class="button-row" aria-label="Button examples">
             <button class="stellartide-campaign-button" type="button">
               <span>Log In</span>
@@ -208,6 +245,47 @@
             <div class="spec">
               <strong>Motion</strong>
               <span>Fast lift and press, disabled for reduced motion.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-header">
+            <h2>Button 2 / Signal</h2>
+            <p class="stage-copy">A tighter angular button built from the supplied blue, yellow, and red layer artwork.</p>
+          </div>
+
+          <div class="button-row" aria-label="Button 2 examples">
+            <button class="stellartide-signal-button" type="button">
+              <span>Claim</span>
+            </button>
+            <button class="stellartide-signal-button" data-state="hover" type="button">
+              <span>Equip</span>
+            </button>
+            <button class="stellartide-signal-button" data-state="pressed" type="button">
+              <span>Boost</span>
+            </button>
+            <button class="stellartide-signal-button" type="button" disabled>
+              <span>Done</span>
+            </button>
+          </div>
+
+          <div class="spec-grid" aria-label="Button 2 component notes">
+            <div class="spec">
+              <strong>Shell</strong>
+              <span>Blue, yellow, and red source layers compose one button shell.</span>
+            </div>
+            <div class="spec">
+              <strong>Class</strong>
+              <span>Use stellartide-signal-button, with stellartide-button-2 available as an alias.</span>
+            </div>
+            <div class="spec">
+              <strong>Label</strong>
+              <span>Short action words fit the flatter, wider silhouette best.</span>
+            </div>
+            <div class="spec">
+              <strong>States</strong>
+              <span>Hover, press, focus, and disabled mirror Button 1.</span>
             </div>
           </div>
         </div>
